@@ -1,0 +1,3 @@
+shukay_main_homepage:
+    pattern:  /
+    defaults: { _controller: ShukayMainBundle:Default:index }

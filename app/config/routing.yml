@@ -1,0 +1,5 @@
+shukay_main:
+    resource: "@ShukayMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
