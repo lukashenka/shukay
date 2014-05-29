@@ -17,6 +17,9 @@ class AppKernel extends Kernel
 			new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 			new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 			new Shukay\MainBundle\ShukayMainBundle(),
+			new FOS\UserBundle\FOSUserBundle(),
+			new Shukay\UserBundle\ShukayUserBundle(),
+			new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {
