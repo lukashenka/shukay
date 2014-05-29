@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+	<meta charset="UTF-8"/>
+	{% block javascripts %}
+		{% javascripts '@jquery_js' '@bootstrap_js' filter='?yui_js' combine=true %}
+		<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	{% endblock %}
+
+	{% block stylesheets %}
+		{% stylesheets '@bootstrap_less' combine=true %}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
+		{% endstylesheets %}
+	{% endblock %}
+
+	<title>{% block title %}Welcome!{% endblock %}</title>
+
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
 </html>
