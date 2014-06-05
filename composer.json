@@ -55,7 +55,10 @@
 		"sonata-project/user-bundle": "dev-master",
 
 
-		"sonata-project/datagrid-bundle": "dev-master"
+		"sonata-project/datagrid-bundle": "dev-master",
+
+
+		"sonata-project/easy-extends-bundle": "dev-master"
 
 	},
 	"scripts": {

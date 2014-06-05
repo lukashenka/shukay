@@ -32,4 +32,13 @@ class User extends BaseUser
 	{
 		return $this->id;
 	}
+
+	/**
+	 * @ORM\ManyToMany(targetEntity="Shukay\UserBundle\Entity\Groups")
+	 * @ORM\JoinTable(name="shukay_user_user_group",
+	 *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+	 * )
+	 */
+	protected $groups;
 }

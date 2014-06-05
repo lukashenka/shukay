@@ -1,3 +1,7 @@
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+
 sonata_block:
     default_contexts: [cms]
     blocks:
@@ -5,6 +9,8 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts:   [admin]
         # Your other blocks
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
 
 
 sonata_doctrine_orm_admin:

@@ -1,0 +1,7 @@
+parameters:
+#    shukay_admin.example.class: Shukay\AdminBundle\Example
+
+services:
+#    shukay_admin.example:
+#        class: %shukay_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
