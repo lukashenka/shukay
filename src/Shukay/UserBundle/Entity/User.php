@@ -22,6 +22,10 @@ class User extends BaseUser
 	 */
 	protected $id;
 
+	/**
+	 * @ORM\OneToMany(targetEntity="Shukay\StuffBundle\Entity\Stuff", mappedBy="owner")
+	 */
+	private $stuff;
 
 	/**
 	 * Get id
@@ -41,4 +45,59 @@ class User extends BaseUser
 	 * )
 	 */
 	protected $groups;
+
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->groups = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+
+
+	/**
+	 * Get groups
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getGroups()
+	{
+		return $this->groups;
+	}
+
+	/**
+	 * Add stuff
+	 *
+	 * @param \Shukay\StuffBundle\Entity\Stuff $stuff
+	 * @return User
+	 */
+	public function addStuff(\Shukay\StuffBundle\Entity\Stuff $stuff)
+	{
+		$this->stuff[] = $stuff;
+
+		return $this;
+	}
+
+	/**
+	 * Remove stuff
+	 *
+	 * @param \Shukay\StuffBundle\Entity\Stuff $stuff
+	 */
+	public function removeStuff(\Shukay\StuffBundle\Entity\Stuff $stuff)
+	{
+		$this->stuff->removeElement($stuff);
+	}
+
+	/**
+	 * Get stuff
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getStuff()
+	{
+		return $this->stuff;
+	}
+
+
 }

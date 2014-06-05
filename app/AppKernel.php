@@ -19,25 +19,24 @@ class AppKernel extends Kernel
 			new Shukay\MainBundle\ShukayMainBundle(),
 
 			new FOS\UserBundle\FOSUserBundle(),
-
-			new Shukay\UserBundle\ShukayUserBundle(),
-
-
 			new Sonata\CoreBundle\SonataCoreBundle(),
-			new Sonata\BlockBundle\SonataBlockBundle(),
-			new Sonata\jQueryBundle\SonatajQueryBundle(),
-
-			new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-
-			new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-
-			new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-			new Sonata\AdminBundle\SonataAdminBundle(),
-			new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+			new Shukay\UserBundle\ShukayUserBundle(),
 
 			new Shukay\AdminBundle\ShukayAdminBundle(),
 
-			new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+			new Sonata\BlockBundle\SonataBlockBundle(),
+			new Sonata\jQueryBundle\SonatajQueryBundle(),
+			new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+
+			new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+			new Sonata\AdminBundle\SonataAdminBundle(),
+			new Shukay\StuffBundle\ShukayStuffBundle(),
+			new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+			new Sonata\MediaBundle\SonataMediaBundle(),
+
+			new Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
+			new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -3,6 +3,8 @@ imports:
     - { resource: security.yml }
     - { resource: assetic.yml }
     - { resource: sonata.yml }
+    - { resource: sonata_core.yml }
+    - { resource: @ShukayAdminBundle/Resources/config/admin.yml }
 
 framework:
     #esi:             ~
@@ -41,20 +43,42 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         # path:     "%database_path%"
-        types:
-            json: Sonata\Doctrine\Types\JsonType
+
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-#        auto_mapping: true
         entity_managers:
-              default:
-                mappings:
-                  ApplicationSonataUserBundle: ~
-                  SonataUserBundle: ~
-                  ShukayUserBundle: ~
-                  ShukayAdminBundle: ~
-                  ShukayMainBundle: ~
+                    default:
+                        mappings:
+                            ApplicationSonataMediaBundle: ~
+                            SonataMediaBundle: ~
+                            ShukayUserBundle: ~
+                            ShukayStuffBundle: ~
+
+    dbal:
+         types:
+               json: Sonata\Doctrine\Types\JsonType
+
+doctrine_phpcr:
+    odm:
+        auto_mapping: true
+        mappings:
+            SonataMediaBundle:
+                prefix: Sonata\MediaBundle\PHPCR
+    session:
+            backend:
+                type: doctrinedbal
+                # requires DoctrineCacheBundle
+                # caches:
+                #     meta: doctrine_cache.providers.phpcr_meta
+                #     nodes: doctrine_cache.providers.phpcr_nodes
+                # enable logging
+                logging: true
+                # enable profiling in the debug toolbar.
+                profiling: true
+            workspace: default
+            username: admin
+            password: admin
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -65,8 +89,10 @@ swiftmailer:
     spool:     { type: memory }
 
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: Shukay\UserBundle\Entity\User
+    db_driver:        orm # can be orm or odm
+    firewall_name:    main
+    user_class:       Shukay\UserBundle\Entity\User
     group:
-         group_class: Shukay\UserBundle\Entity\Groups
+        group_class:  Shukay\UserBundle\Entity\Group
+
+

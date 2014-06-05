@@ -1,0 +1,11 @@
+services:
+    sonata.admin.post:
+        class: Shukay\AdminBundle\Admin\StuffAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Stuff", label: "Stuff" }
+        arguments:
+            - ~
+            - Shukay\StuffBundle\Entity\Stuff
+            - ~
+        calls:
+            - [ setTranslationDomain, [ShukayAdminBundle]]
