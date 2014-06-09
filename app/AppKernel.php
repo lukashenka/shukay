@@ -32,11 +32,8 @@ class AppKernel extends Kernel
 			new Sonata\AdminBundle\SonataAdminBundle(),
 			new Shukay\StuffBundle\ShukayStuffBundle(),
 			new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-			new Sonata\MediaBundle\SonataMediaBundle(),
-
-			new Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
-			new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
-
+			new Shukay\MapBundle\ShukayMapBundle(),
+			new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

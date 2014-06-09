@@ -1,5 +1,5 @@
 services:
-    sonata.admin.post:
+    sonata.admin.stuff:
         class: Shukay\AdminBundle\Admin\StuffAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Stuff", label: "Stuff" }
@@ -9,3 +9,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [ShukayAdminBundle]]
+
+    sonata.admin.location:
+            class: Shukay\AdminBundle\Admin\LocationAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Map", label: "Location" }
+            arguments:
+                - ~
+                - Shukay\MapBundle\Entity\Location
+                - ~
+            calls:
+                - [ setTranslationDomain, [ShukayAdminBundle]]

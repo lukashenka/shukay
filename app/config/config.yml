@@ -4,6 +4,7 @@ imports:
     - { resource: assetic.yml }
     - { resource: sonata.yml }
     - { resource: sonata_core.yml }
+    - { resource: twig.yml }
     - { resource: @ShukayAdminBundle/Resources/config/admin.yml }
 
 framework:
@@ -50,35 +51,12 @@ doctrine:
         entity_managers:
                     default:
                         mappings:
-                            ApplicationSonataMediaBundle: ~
-                            SonataMediaBundle: ~
                             ShukayUserBundle: ~
                             ShukayStuffBundle: ~
+                            ShukayMapBundle: ~
+                            FOSUserBundle: ~
 
-    dbal:
-         types:
-               json: Sonata\Doctrine\Types\JsonType
 
-doctrine_phpcr:
-    odm:
-        auto_mapping: true
-        mappings:
-            SonataMediaBundle:
-                prefix: Sonata\MediaBundle\PHPCR
-    session:
-            backend:
-                type: doctrinedbal
-                # requires DoctrineCacheBundle
-                # caches:
-                #     meta: doctrine_cache.providers.phpcr_meta
-                #     nodes: doctrine_cache.providers.phpcr_nodes
-                # enable logging
-                logging: true
-                # enable profiling in the debug toolbar.
-                profiling: true
-            workspace: default
-            username: admin
-            password: admin
 
 # Swiftmailer Configuration
 swiftmailer:

@@ -1,4 +1,5 @@
 assetic:
+  bundles:        [ 'OhGoogleMapFormTypeBundle' ]
   java: /usr/bin/java
   filters:
     cssembed:

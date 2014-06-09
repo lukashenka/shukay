@@ -1,0 +1,3 @@
+shukay_map_homepage:
+    pattern:  /map/
+    defaults: { _controller: ShukayMapBundle:Default:index }
