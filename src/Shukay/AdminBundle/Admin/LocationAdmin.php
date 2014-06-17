@@ -23,13 +23,12 @@ class LocationAdmin extends Admin
 	{
 		$formMapper
 
-			->add('latlng', 'sonata_type_immutable_array', array('label' => 'Карта',
-				'keys' => array(
-					array('latlng', new GoogleMapType(), array())
-				)))
-			->add('latitude') //if no type is specified, SonataAdminBundle tries to guess it
-			->add('longitude') //if no type is specified, SonataAdminBundle tries to guess it
-		;
+			/*			->add('latlng', 'sonata_type_immutable_array', array('label' => 'Карта',
+							'keys' => array(
+								array('latlng', new GoogleMapType(), array())
+							)))*/
+			->add('latitude')
+			->add('longitude');
 	}
 
 	// Fields to be shown on filter forms

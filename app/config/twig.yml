@@ -1,4 +1,4 @@
 twig:
     form:
         resources:
-            - 'OhGoogleMapFormTypeBundle:Form:fields.html.twig'
+#            - 'OhGoogleMapFormTypeBundle:Form:fields.html.twig'

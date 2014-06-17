@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta charset="UTF-8"/>
+
 	{% block javascripts %}
 		{% javascripts '@jquery_js' '@bootstrap_js' filter='?yui_js' combine=true %}
 		<script src="{{ asset_url }}"></script>
@@ -19,6 +21,21 @@
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
-{% block body %}{% endblock %}
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col-xs-12 col-md-4 col-lg-4">
+			{% block login-form %}
+			{% endblock login-form %}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-6">{% block body %}{% endblock %}</div>
+		<div class="clearfix visible-xs"></div>
+		<div class="col-md-6">.col-md-6</div>
+	</div>
+
+</div>
+
 </body>
 </html>

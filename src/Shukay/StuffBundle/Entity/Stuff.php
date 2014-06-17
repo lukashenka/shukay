@@ -53,6 +53,12 @@ class Stuff
 	 */
 	private $owner;
 
+	/**
+	 * @ORM\OneToOne(targetEntity="Shukay\MapBundle\Entity\Location", inversedBy="stuff")
+	 * @ORM\JoinColumn(name="location_id", referencedColumnName="id")
+	 */
+	private $location;
+
 
 	public $path;
 
@@ -249,5 +255,28 @@ class Stuff
 	public function __construct()
 	{
 		$this->setPicture("");
+	}
+
+	/**
+	 * Set location
+	 *
+	 * @param \Shukay\MapBundle\Entity\Location $location
+	 * @return Stuff
+	 */
+	public function setLocation(\Shukay\MapBundle\Entity\Location $location = null)
+	{
+		$this->location = $location;
+
+		return $this;
+	}
+
+	/**
+	 * Get location
+	 *
+	 * @return \Shukay\MapBundle\Entity\Location
+	 */
+	public function getLocation()
+	{
+		return $this->location;
 	}
 }

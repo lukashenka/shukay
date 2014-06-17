@@ -33,7 +33,7 @@ class AppKernel extends Kernel
 			new Shukay\StuffBundle\ShukayStuffBundle(),
 			new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
 			new Shukay\MapBundle\ShukayMapBundle(),
-			new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
+
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

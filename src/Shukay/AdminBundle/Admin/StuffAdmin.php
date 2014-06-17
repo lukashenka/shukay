@@ -25,7 +25,8 @@ class StuffAdmin extends Admin
 			->add('name') //if no type is specified, SonataAdminBundle tries to guess it
 			->add('description') //if no type is specified, SonataAdminBundle tries to guess it
 			->add('file', 'file', array('required' => false))
-			->add('owner', 'entity', array('class' => 'Shukay\UserBundle\Entity\User'));
+			->add('owner', 'entity', array('class' => 'Shukay\UserBundle\Entity\User'))
+			->add('location', 'entity', array('class' => 'Shukay\MapBundle\Entity\Location'));
 	}
 
 	// Fields to be shown on filter forms
@@ -43,7 +44,8 @@ class StuffAdmin extends Admin
 			->addIdentifier('name')
 			->add('description') //if no type is specified, SonataAdminBundle tries to guess it
 			->add('picture')
-			->add('owner', 'entity', array('class' => 'Shukay\UserBundle\Entity\User'));
+			->add('owner', 'entity', array('class' => 'Shukay\UserBundle\Entity\User'))
+			->add('location', 'entity', array('class' => 'Shukay\MapBundle\Entity\Location'));
 	}
 
 

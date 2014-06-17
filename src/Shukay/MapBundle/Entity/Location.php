@@ -4,7 +4,7 @@ namespace Shukay\MapBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
+
 
 /**
  * Location
@@ -37,6 +37,11 @@ class Location
 	 */
 	private $longitude;
 
+
+	/**
+	 * @ORM\OneToOne(targetEntity="Shukay\StuffBundle\Entity\Stuff", mappedBy="location")
+	 */
+	private $stuff;
 
 	/**
 	 * Get id
@@ -104,11 +109,38 @@ class Location
 
 	/**
 	 * @Assert\NotBlank()
-	 * @OhAssert\LatLng()
 	 */
 	public function getLatLng()
 	{
 		return array('latlng' => array('lat' => $this->latitude, 'lng' => $this->longitude));
 	}
 
+
+	/**
+	 * Set stuff
+	 *
+	 * @param \Shukay\StuffBundle\Entity\Stuff $stuff
+	 * @return Location
+	 */
+	public function setStuff(\Shukay\StuffBundle\Entity\Stuff $stuff = null)
+	{
+		$this->stuff = $stuff;
+
+		return $this;
+	}
+
+	/**
+	 * Get stuff
+	 *
+	 * @return \Shukay\StuffBundle\Entity\Stuff
+	 */
+	public function getStuff()
+	{
+		return $this->stuff;
+	}
+
+	public function __toString()
+	{
+		return "Longitude: {$this->getLongitude()}; Latitude {$this->getLatitude()}";
+	}
 }
