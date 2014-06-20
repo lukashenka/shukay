@@ -49,7 +49,11 @@
 		"sonata-project/admin-bundle": "dev-master",
 		"sonata-project/doctrine-orm-admin-bundle": "dev-master",
 		"sonata-project/jquery-bundle": "dev-master",
-		"sonata-project/easy-extends-bundle": "dev-master"
+		"sonata-project/easy-extends-bundle": "dev-master",
+		"knplabs/knp-menu": "2.0.*@dev",
+		"knplabs/knp-menu-bundle": "2.0.*@dev",
+		"jms/serializer-bundle": "dev-master",
+		"friendsofsymfony/oauth-server-bundle": "dev-master"
 
 
 	},

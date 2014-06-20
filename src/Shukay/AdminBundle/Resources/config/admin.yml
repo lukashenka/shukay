@@ -20,3 +20,15 @@ services:
                 - ~
             calls:
                 - [ setTranslationDomain, [ShukayAdminBundle]]
+
+    admin.menu:
+            class: Shukay\AdminBundle\Admin\MenuAdmin
+            tags:
+            - { name:  sonata.admin, manager_type: orm, group: Меню, label: Меню}
+            arguments: [null, Shukay\MenuBundle\Entity\Menu, SonataAdminBundle:CRUD]
+
+    admin.menu_type:
+            class: Shukay\AdminBundle\Admin\MenuTypeAdmin
+            tags:
+            - { name:  sonata.admin, manager_type: orm, group: Меню Тип, label: Меню Тип}
+            arguments: [null, Shukay\MenuBundle\Entity\MenuType, SonataAdminBundle:CRUD]

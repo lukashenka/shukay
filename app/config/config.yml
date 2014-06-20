@@ -53,7 +53,9 @@ doctrine:
                         mappings:
                             ShukayUserBundle: ~
                             ShukayStuffBundle: ~
+                            ShukayMenuBundle: ~
                             ShukayMapBundle: ~
+                            ShukayOAuthBundle: ~
                             FOSUserBundle: ~
 
 
@@ -73,4 +75,16 @@ fos_user:
     group:
         group_class:  Shukay\UserBundle\Entity\Group
 
+fos_oauth_server:
+    db_driver:           orm
+    client_class:        Shukay\OAuthBundle\Entity\Client
+    access_token_class:  Shukay\OAuthBundle\Entity\AccessToken
+    refresh_token_class: Shukay\OAuthBundle\Entity\RefreshToken
+    auth_code_class:     Shukay\OAuthBundle\Entity\AuthCode
 
+
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: knp_menu.html.twig
+    templating: false # if true, enables the helper for PHP templates
+    default_renderer: twig # The renderer to use, list is also available by default

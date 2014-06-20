@@ -1,0 +1,66 @@
+<div class="modal-dialog">
+	<div class="modal-content">
+		<form action="{{ path("fos_user_security_check") }}" method="post" role="form" data-async
+		      data-target="#rating-modal" class="text-left">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">{{ 'layout.login'|trans }}</h4>
+			</div>
+			<div class="modal-body">
+				<div id="login-errors">
+					{% if error %}
+						<div>{{ error|trans }}</div>
+					{% endif %}
+				</div>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+				<div class="form-group">
+					<label for="email">{{ 'security.login.username_email'|trans }}</label>
+					<input type="text" class="form-control" id="username" name="_username"
+					       value="{{ last_username }}" required="required" placeholder="adr...@email.com">
+				</div>
+				<div class="form-group">
+					<label for="password">{{ 'security.login.password'|trans }}</label><br/>
+					<input type="password" id="password" name="_password" required="required" class="form-control"
+					       placeholder="********">
+				</div>
+				<div class="form-group">
+					<label for="remember_me">
+						<input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+						{{ 'security.login.remember_me'|trans }}
+					</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"
+				       class="btn btn-primary">
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		$('#_submit').click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				type: $('form').attr('method'),
+				url: '{{ path("fos_user_security_check") }}',
+				data: $('form').serialize(),
+				dataType: "json",
+				success: function (data, status, object) {
+					if (data.success != true) {
+
+						displayErrorMessage(data.message, $("#login-errors"));
+
+					}
+					else {
+						reloadUserLoginForm('{{ path("login_form") }}', $("#form-login"));
+					}
+				},
+				error: function (data, status, object) {
+					console.log(data);
+				}
+			});
+		});
+	});
+</script>

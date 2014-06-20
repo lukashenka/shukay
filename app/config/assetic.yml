@@ -14,6 +14,14 @@ assetic:
         inputs:
             - '%kernel.root_dir%/Resources/js/jquery-2.1.1.js'
         filters: [?yui_js]
+    user_js:
+            inputs:
+                - '@ShukayUserBundle/Resources/js/user.js'
+            filters: [?yui_js]
+    core_js:
+             inputs:
+                - '%kernel.root_dir%/Resources/js/core.js'
+             filters: [?yui_js]
     bootstrap_js:
         inputs:
             - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/transition.js'

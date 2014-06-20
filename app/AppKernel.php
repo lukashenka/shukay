@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
@@ -33,7 +33,10 @@ class AppKernel extends Kernel
 			new Shukay\StuffBundle\ShukayStuffBundle(),
 			new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
 			new Shukay\MapBundle\ShukayMapBundle(),
-
+			new JMS\SerializerBundle\JMSSerializerBundle(),
+			new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+			new Shukay\OAuthBundle\ShukayOAuthBundle(),
+			new Shukay\MenuBundle\ShukayMenuBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

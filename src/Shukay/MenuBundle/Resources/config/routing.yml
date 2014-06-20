@@ -1,0 +1,3 @@
+shukay_menu_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ShukayMenuBundle:Default:index }
