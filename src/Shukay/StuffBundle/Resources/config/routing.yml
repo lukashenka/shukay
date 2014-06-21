@@ -1,3 +1,34 @@
-shukay_stuff_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ShukayStuffBundle:Default:index }
+stuff_list:
+    pattern:  /list/
+    defaults: { _controller: ShukayStuffBundle:Stuff:list }
+
+stuff_create:
+    pattern:  /create/
+    defaults: { _controller: ShukayStuffBundle:Stuff:create }
+    methods:  [POST]
+
+stuff_new:
+    pattern:  /new/
+    defaults: { _controller: ShukayStuffBundle:Stuff:new }
+    methods:  [GET]
+
+stuff_show:
+    pattern:  /show/{id}
+    defaults: { _controller: ShukayStuffBundle:Stuff:show }
+    methods:  [GET]
+
+stuff_edit:
+    pattern:  /edit/{id}
+    defaults: { _controller: ShukayStuffBundle:Stuff:edit }
+    methods:  [GET]
+
+stuff_update:
+    pattern:  /update/{id}
+    defaults: { _controller: ShukayStuffBundle:Stuff:update }
+    methods:  [PUT]
+
+
+stuff_delete:
+    pattern:  /delete/{id}
+    defaults: { _controller: ShukayStuffBundle:Stuff:delete }
+    methods:  [DELETE]

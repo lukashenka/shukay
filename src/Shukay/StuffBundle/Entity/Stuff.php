@@ -54,7 +54,7 @@ class Stuff
 	private $owner;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Shukay\MapBundle\Entity\Location", inversedBy="stuff")
+	 * @ORM\OneToOne(targetEntity="Shukay\MapBundle\Entity\Location", inversedBy="stuff",cascade={"persist"})
 	 * @ORM\JoinColumn(name="location_id", referencedColumnName="id")
 	 */
 	private $location;

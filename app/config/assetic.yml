@@ -14,6 +14,11 @@ assetic:
         inputs:
             - '%kernel.root_dir%/Resources/js/jquery-2.1.1.js'
         filters: [?yui_js]
+
+    gmap_jquery:
+            inputs:
+                - '%kernel.root_dir%/Resources/js/gmap3.js'
+            filters: [?yui_js]
     user_js:
             inputs:
                 - '@ShukayUserBundle/Resources/js/user.js'
@@ -22,6 +27,10 @@ assetic:
              inputs:
                 - '%kernel.root_dir%/Resources/js/core.js'
              filters: [?yui_js]
+    gmap_js:
+            inputs:
+               - '@ShukayMapBundle/Resources/js/gmap.js'
+            filters: [?yui_js]
     bootstrap_js:
         inputs:
             - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/transition.js'

@@ -1,0 +1,36 @@
+<div id="full-map" style="width: 100%; height: 500px">
+
+</div>
+<script>
+
+
+    $("#full-map").gmap3({
+
+                map: {
+                    options: {
+                        center: [{{ google_map.large_map.lat }}, {{ google_map.large_map.lng }}],
+                        zoom:{{  google_map.large_map.zoom }},
+                        mapTypeControl: true,
+                        mapTypeControlOptions: {
+                            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                        },
+                        navigationControl: true,
+                        scrollwheel: true,
+                        streetViewControl: true
+                    }
+                }
+            }
+    );
+
+
+    $("#full-map").gmap3({
+
+        getgeoloc: {
+            callback: function (latLng) {
+                $(this).gmap3("get").setCenter(latLng);
+
+            }
+        }
+    });
+
+</script>

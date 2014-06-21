@@ -1,0 +1,15 @@
+{% extends "ShukayStuffBundle:Stuff:layout.html.twig" %}
+{% block content %}
+    <h1>Stuff edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('stuff_list') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

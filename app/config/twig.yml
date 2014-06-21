@@ -1,4 +1,7 @@
 twig:
     form:
         resources:
-#            - 'OhGoogleMapFormTypeBundle:Form:fields.html.twig'
+    globals:
+        gapi:  "@gapi"
+        google_map:    "%google_map%"
+

@@ -1,7 +1,8 @@
 parameters:
-#    shukay_map.example.class: Shukay\MapBundle\Example
+
 
 services:
-#    shukay_map.example:
-#        class: %shukay_map.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    gapi:
+          class: Shukay\MapBundle\Service\GoogleApiService
+          arguments: [@service_container]
+

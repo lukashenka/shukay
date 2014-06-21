@@ -12,7 +12,7 @@ shukay_map:
 
 shukay_stuff:
     resource: "@ShukayStuffBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /stuff/
 
 shukay_admin:
     resource: "@ShukayAdminBundle/Resources/config/routing.yml"
