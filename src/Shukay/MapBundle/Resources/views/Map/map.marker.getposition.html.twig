@@ -7,9 +7,9 @@
 
     $("#map-get-position").gmap3({
 
-        map:{
-            options:{
-                center:[{{ google_map.small_map.lat }}, {{ google_map.small_map.lng }}],
+        map: {
+            options: {
+                center: [{{ google_map.small_map.lat }}, {{ google_map.small_map.lng }}],
                 zoom:{{  google_map.small_map.zoom }},
                 mapTypeControl: true,
                 mapTypeControlOptions: {
@@ -20,23 +20,25 @@
                 streetViewControl: true
             }
         },
-        getgeoloc:{
-            callback : function(latLng){
-                if (latLng){
+        getgeoloc: {
+            callback: function (latLng) {
+                if (latLng) {
                     $(this).gmap3({
-                        marker:{
-                            latLng:latLng,
+                        marker: {
+                            latLng: latLng,
                             options: {
                                 draggable: true
                             },
-                            events:{
-                                dragend:function(){
+                            events: {
+                                drag: function (marker,event) {
 
+                                    $("#{{ lat_id }}").val(marker.position.lat());
+                                    $("#{{ long_id }}").val(marker.position.lat());
                                 }
                             }
                         },
-                        map:{
-                            options:{
+                        map: {
+                            options: {
                                 zoom: {{  google_map.small_map.zoom }}
                             }
                         }
@@ -50,24 +52,24 @@
     });
 
     {#var markerOptions = {#}
-        {#lat: {{ google_map.small_map.lat }},#}
-        {#lng: {{ google_map.small_map.lng }},#}
-        {#draggable: true#}
+    {#lat: {{ google_map.small_map.lat }},#}
+    {#lng: {{ google_map.small_map.lng }},#}
+    {#draggable: true#}
 
     {#}#}
 
     {#displayMap('map-get-position', defaultOptions, function () {#}
 
-        {#getHtmlLocation(markerOptions, function (options) {#}
+    {#getHtmlLocation(markerOptions, function (options) {#}
 
 
-            {#options.draggable = markerOptions.draggable;#}
-            {#options.position = new google.maps.LatLng(options.lat, options.lng);#}
-            {#var marker = addMarker(options);#}
-            {#listenMarkerPosition(marker, function (data) {#}
-                {#console.log(data)#}
-            {#})#}
-        {#});#}
+    {#options.draggable = markerOptions.draggable;#}
+    {#options.position = new google.maps.LatLng(options.lat, options.lng);#}
+    {#var marker = addMarker(options);#}
+    {#listenMarkerPosition(marker, function (data) {#}
+    {#console.log(data)#}
+    {#})#}
+    {#});#}
     {#});#}
 
 

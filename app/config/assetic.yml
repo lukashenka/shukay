@@ -10,6 +10,10 @@ assetic:
       file: %kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php
       apply_to: "\.less$"
   assets:
+    dropzone:
+          inputs:
+              - '%kernel.root_dir%/Resources/js/dropzone.js'
+          filters: [?yui_js]
     jquery_js:
         inputs:
             - '%kernel.root_dir%/Resources/js/jquery-2.1.1.js'

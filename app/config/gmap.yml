@@ -1,0 +1,14 @@
+parameters:
+    google_api:
+          api_key: 'AIzaSyAcOPufmCij2bI87Vh4JBi5PeiCVpjBegI'
+
+    google_map:
+          large_map:
+              zoom: 6
+              lat: 53.9
+              lng: 27.4
+
+          small_map:
+              zoom: 16
+              lat: 53.9
+              lng: 27.4

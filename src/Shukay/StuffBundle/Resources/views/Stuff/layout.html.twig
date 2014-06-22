@@ -2,7 +2,7 @@
 {% block javascripts %}
     {{ parent() }}
     {#TODO: ADD js to combine#}
-    {% javascripts '@gmap_jquery' filter='?yui_js' combine=true %}
+    {% javascripts '@gmap_jquery' '@dropzone' filter='?yui_js' combine=true %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 

@@ -39,6 +39,6 @@ class StuffType extends AbstractType
      */
     public function getName()
     {
-        return 'shukay_stuffbundle_stuff';
+        return 'stuff';
     }
 }

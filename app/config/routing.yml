@@ -62,3 +62,6 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
+oneup_uploader:
+    resource: .
+    type: uploader

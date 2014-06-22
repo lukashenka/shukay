@@ -2,3 +2,6 @@ parameters:
 #    shukay_main.example.class: Shukay\MainBundle\Example
 
 services:
+    path:
+          class: Shukay\MainBundle\Service\PathService
+          arguments: [@service_container]
