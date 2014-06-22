@@ -5,5 +5,7 @@ services:
         stuff.upload_listener:
             class: Shukay\StuffBundle\Listener\UploadListener
             arguments: ["@service_container","@security.context"]
-            tags: [{ name: "kernel.event_listener", event: oneup_uploader.pre_upload, method: onPreUpload }]
+            tags:
+                - { name: "kernel.event_listener", event: oneup_uploader.pre_upload, method: onPreUpload }
+                - { name: "kernel.event_listener", event: oneup_uploader.post_upload, method: onPostUpload }
 

@@ -15,6 +15,13 @@
         {% stylesheets '@bootstrap_less' combine=true %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
         {% endstylesheets %}
+
+
+
+        {% stylesheets 'assetic/dropzone_css.css' filter='cssrewrite' %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+
     {% endblock %}
 
     <title>{% block title %}Welcome!{% endblock %}</title>

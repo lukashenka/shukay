@@ -2,10 +2,11 @@
 
 namespace Shukay\StuffBundle\Form;
 
+use Shukay\MapBundle\Form\LocationType;
+use Shukay\StuffBundle\Form\Type\DropzoneType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Shukay\MapBundle\Form\LocationType;
 
 class StuffType extends AbstractType
 
@@ -17,11 +18,10 @@ class StuffType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('picture')
+            ->add('location', new LocationType())
+            ->add('picture', new DropzoneType())
             ->add('name')
-            ->add('description')
-            ->add('location',new LocationType())
-        ;
+            ->add('description');
     }
     
     /**

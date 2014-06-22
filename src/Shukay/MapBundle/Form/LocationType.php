@@ -15,9 +15,9 @@ class LocationType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('latitude')
-			->add('longitude');
-	}
+            ->add('latitude', 'hidden', array("attr" => array("id" => "form_latitude")))
+            ->add('longitude', 'hidden', array("attr" => array("id" => "form_longitude")));
+    }
 
 	/**
 	 * @param OptionsResolverInterface $resolver
@@ -34,6 +34,6 @@ class LocationType extends AbstractType
 	 */
 	public function getName()
 	{
-		return 'shukay_mapbundle_location';
-	}
+        return 'location';
+    }
 }

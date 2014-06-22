@@ -93,4 +93,7 @@ knp_menu:
 oneup_uploader:
     mappings:
         stuff:
-            frontend: dropzone
+            frontend: custom
+            custom_frontend:
+                class: Shukay\StuffBundle\Controller\DropzoneController
+                name: MyFancyCustomUploader

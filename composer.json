@@ -54,8 +54,10 @@
         "knplabs/knp-menu-bundle": "2.0.*@dev",
         "jms/serializer-bundle": "dev-master",
         "friendsofsymfony/oauth-server-bundle": "dev-master",
-        "oneup/uploader-bundle": "1.0.*@dev"
+        "oneup/uploader-bundle": "1.0.*@dev",
 
+
+        "knplabs/knp-gaufrette-bundle": "0.1.*"
 
 
     },

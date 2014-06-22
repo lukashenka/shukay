@@ -2,10 +2,5 @@
 {% block content %}
     {#{% include "ShukayMapBundle:Map:map.marker.getposition.html.twig" with{"lat_id":"stuff_location_latitude","long_id":"stuff_location_longitude"} %}#}
 
-    <form action="{{ oneup_uploader_endpoint('stuff') }}" class="dropzone">
-        <div class="fallback">
-            <input name="file" type="file" multiple />
-        </div>
-    </form>
     {{ form(form) }}
 {% endblock %}

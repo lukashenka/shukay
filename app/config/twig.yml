@@ -1,7 +1,10 @@
 twig:
     form:
         resources:
+                - "ShukayStuffBundle:Dropzone:dropzone.type.html.twig"
+                - "ShukayMapBundle:Location:location.type.html.twig"
     globals:
         gapi:  "@gapi"
         google_map:    "%google_map%"
+
 

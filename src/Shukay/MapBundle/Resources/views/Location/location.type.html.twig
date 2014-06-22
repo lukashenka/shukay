@@ -1,0 +1,64 @@
+{% block location_widget %}
+
+
+    <div id="map-get-position" style="width: 100%; height: 400px "></div>
+    {{ form_widget(form.latitude) }}
+    {{ form_widget(form.longitude) }}
+    <script>
+
+
+        $("#map-get-position").gmap3({
+
+            map: {
+                options: {
+                    center: [{{ google_map.small_map.lat }}, {{ google_map.small_map.lng }}],
+                    zoom:{{  google_map.small_map.zoom }},
+                    mapTypeControl: true,
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                    },
+                    navigationControl: true,
+                    scrollwheel: true,
+                    streetViewControl: true
+                }
+            },
+            getgeoloc: {
+                callback: function (latLng) {
+                    if (!latLng) {
+                        latLng = new google.maps.LatLng({{ google_map.small_map.lat }}, {{ google_map.small_map.lng }});
+                    }
+
+                    $("#{{ form.longitude.vars.id }}").val(latLng.lat());
+                    $("#{{ form.latitude.vars.id }}").val(latLng.lat());
+
+                    $(this).gmap3({
+
+                        marker: {
+                            latLng: latLng,
+                            options: {
+                                draggable: true
+                            },
+                            events: {
+                                drag: function (marker, event) {
+
+                                    $("#{{ form.longitude.vars.id }}").val(marker.position.lat());
+                                    $("#{{ form.latitude.vars.id }}").val(marker.position.lat());
+                                }
+                            }
+                        },
+                        map: {
+                            options: {
+                                zoom: {{  google_map.small_map.zoom }}
+                            }
+                        }
+                    });
+
+                    $(this).gmap3("get").setCenter(latLng);
+
+
+                }
+            }
+        });
+    </script>
+
+{% endblock %}

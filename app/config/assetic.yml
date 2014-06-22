@@ -1,5 +1,6 @@
 assetic:
-#  bundles:        [ 'OhGoogleMapFormTypeBundle' ]
+  debug: %kernel.debug%
+  use_controller: false
   java: /usr/bin/java
   filters:
     cssembed:
@@ -9,6 +10,9 @@ assetic:
     lessphp:
       file: %kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php
       apply_to: "\.less$"
+
+    cssrewrite: ~
+
   assets:
     dropzone:
           inputs:
