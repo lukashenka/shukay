@@ -35,9 +35,14 @@ class DropzoneController extends BaseController
                 if ($user->isGranted('IS_AUTHENTICATED_FULLY')) {
 
                     $userName = $user->getToken()->getUsername();
-                    $uploadPath = $this->container->get("path")->getUploadsDir() . "stuff/" . $userName . "/temp";
 
-                    $fs = new Filesystem();
+	                $dropzone = $this->container->get("dropzone");
+	                $dropzone->setUserName($userName);
+	                $dropzone->setFolder("stuff");
+
+	                $uploadPath = $dropzone->getTempPath();
+
+	                $fs = new Filesystem();
 
                     if (!$fs->exists($uploadPath)) {
                         $fs->mkdir($uploadPath);
@@ -74,4 +79,5 @@ class DropzoneController extends BaseController
         return $this->createSupportedJsonResponse($response->assemble());
     }
 
-} 
+
+}

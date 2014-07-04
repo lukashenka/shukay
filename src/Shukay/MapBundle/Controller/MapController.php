@@ -9,6 +9,11 @@ class MapController extends Controller
 {
 	public function indexAction()
 	{
-		return $this->render('ShukayMapBundle:Default:index.html.twig');
+
+		$em = $this->getDoctrine()->getManager();
+
+		$allStuff = $em->getRepository("ShukayStuffBundle:Stuff")->findAll();
+
+		return $this->render('ShukayMapBundle:Default:index.html.twig', array("allStuff" => $allStuff));
 	}
 }

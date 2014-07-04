@@ -4,33 +4,71 @@
 <script>
 
 
-    $("#full-map").gmap3({
+	$("#full-map").gmap3({
 
-                map: {
-                    options: {
-                        center: [{{ google_map.large_map.lat }}, {{ google_map.large_map.lng }}],
-                        zoom:{{  google_map.large_map.zoom }},
-                        mapTypeControl: true,
-                        mapTypeControlOptions: {
-                            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-                        },
-                        navigationControl: true,
-                        scrollwheel: true,
-                        streetViewControl: true
-                    }
-                }
-            }
-    );
+			map: {
+				options: {
+					center: [{{ google_map.large_map.lat }}, {{ google_map.large_map.lng }}],
+					zoom:{{  google_map.large_map.zoom }},
+					mapTypeControl: true,
+					mapTypeControlOptions: {
+						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+					},
+					navigationControl: true,
+					scrollwheel: true,
+					streetViewControl: true
+				}
+			},
+
+			marker: {
+				values: [
+					{% for stuff in allStuff %}
+					{% if stuff.location is not null  %}
+					{latLng: [{{ stuff.location.latitude }}, {{ stuff.location.longitude }}], data: "Владелец -<b>{{ stuff.owner }}</b>  <br>Имя -  {{ stuff.name }}"},
+					{% endif %}
+					{% endfor %}
+					{address: "66000 Perpignan, France", data: "Perpignan ! GO USAP !", options: {icon: "http://maps.google.com/mapfiles/marker_green.png"}}
+				],
+				options: {
+					draggable: false
+				},
+				events: {
+					mouseover: function (marker, event, context) {
+						var map = $(this).gmap3("get"),
+							infowindow = $(this).gmap3({get: {name: "infowindow"}});
+						if (infowindow) {
+							infowindow.open(map, marker);
+							infowindow.setContent(context.data);
+						} else {
+							$(this).gmap3({
+								infowindow: {
+									anchor: marker,
+									options: {content: context.data}
+								}
+							});
+						}
+					},
+					mouseout: function () {
+						var infowindow = $(this).gmap3({get: {name: "infowindow"}});
+						if (infowindow) {
+							infowindow.close();
+						}
+					}
+				}
+			}
+
+		}
+	);
 
 
-    $("#full-map").gmap3({
+	$("#full-map").gmap3({
 
-        getgeoloc: {
-            callback: function (latLng) {
-                $(this).gmap3("get").setCenter(latLng);
+		getgeoloc: {
+			callback: function (latLng) {
+				$(this).gmap3("get").setCenter(latLng);
 
-            }
-        }
-    });
+			}
+		}
+	});
 
 </script>

@@ -2,13 +2,14 @@
 
 namespace Shukay\StuffBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Shukay\StuffBundle\Entity\Stuff;
 use Shukay\StuffBundle\Form\StuffType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Stuff controller.
@@ -39,22 +40,35 @@ class StuffController extends Controller
     public function createAction(Request $request)
     {
         $user = $this->getUser();
-        $entity = new Stuff();
-        $entity->setOwner($user);
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+
+	    if (!$this->get("security.context")->isGranted('IS_AUTHENTICATED_FULLY')) {
+
+		    throw new AccessDeniedException("");
+	    }
+
+	    $stuff = new Stuff();
+	    $stuff->setOwner($user);
+	    $form = $this->createCreateForm($stuff);
+	    $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	        var_dump($stuff->getPicture());
+	        $dropzone = $this->get("dropzone");
+	        $dropzone->setFolder("stuff");
+	        $dropzone->setUserName($this->get("security.context")->getToken()->getUsername());
 
-            return $this->redirect($this->generateUrl('stuff_show', array('id' => $entity->getId())));
+	        $dropzone->saveImage($stuff->getPicture());
+
+	        $em = $this->getDoctrine()->getManager();
+	        $em->persist($stuff);
+	        $em->flush();
+
+	        return $this->redirect($this->generateUrl('stuff_show', array('id' => $stuff->getId())));
         }
 
         return $this->render("ShukayStuffBundle:Stuff:create.html.twig", array(
-                'entity' => $entity,
-                'form' => $form->createView(),
+		        'entity' => $stuff,
+		        'form' => $form->createView(),
             )
         );
     }
