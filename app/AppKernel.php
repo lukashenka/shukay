@@ -37,7 +37,8 @@ class AppKernel extends Kernel
 			new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
 			new Shukay\OAuthBundle\ShukayOAuthBundle(),
 			new Shukay\MenuBundle\ShukayMenuBundle(),
-            new Oneup\UploaderBundle\OneupUploaderBundle(),
+			new Oneup\UploaderBundle\OneupUploaderBundle(),
+			new Shukay\DropzoneBundle\ShukayDropzoneBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

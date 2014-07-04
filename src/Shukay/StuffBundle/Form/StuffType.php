@@ -2,8 +2,8 @@
 
 namespace Shukay\StuffBundle\Form;
 
+use Shukay\DropzoneBundle\Form\Type\DropzoneType;
 use Shukay\MapBundle\Form\LocationType;
-use Shukay\StuffBundle\Form\Type\DropzoneType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -11,34 +11,34 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class StuffType extends AbstractType
 
 {
-        /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('location', new LocationType())
-            ->add('picture', new DropzoneType())
-            ->add('name')
-            ->add('description');
-    }
-    
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'Shukay\StuffBundle\Entity\Stuff'
-        ));
-    }
+	/**
+	 * @param FormBuilderInterface $builder
+	 * @param array $options
+	 */
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
+		$builder
+			->add('location', new LocationType())
+			->add('picture', new DropzoneType())
+			->add('name')
+			->add('description');
+	}
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'stuff';
-    }
+	/**
+	 * @param OptionsResolverInterface $resolver
+	 */
+	public function setDefaultOptions(OptionsResolverInterface $resolver)
+	{
+		$resolver->setDefaults(array(
+			'data_class' => 'Shukay\StuffBundle\Entity\Stuff'
+		));
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'stuff';
+	}
 }

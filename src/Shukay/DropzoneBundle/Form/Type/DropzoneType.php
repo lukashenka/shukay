@@ -6,20 +6,20 @@
  * Time: 9:44 PM
  */
 
-namespace Shukay\StuffBundle\Form\Type;
+namespace Shukay\DropzoneBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 
 class DropzoneType extends AbstractType
 {
 
-    public function getName()
-    {
-        return 'dropzone';
-    }
+	public function getName()
+	{
+		return 'dropzone';
+	}
 
-    public function getParent()
-    {
-        return "file";
-    }
+	public function getParent()
+	{
+		return "file";
+	}
 } 

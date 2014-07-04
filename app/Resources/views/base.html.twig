@@ -16,10 +16,8 @@
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
         {% endstylesheets %}
 
-
-
-        {% stylesheets 'assetic/dropzone_css.css' filter='cssrewrite' %}
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+	    {% stylesheets '@dropzone_css' filter='cssrewrite' %}
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
         {% endstylesheets %}
 
     {% endblock %}

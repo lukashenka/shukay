@@ -6,7 +6,7 @@
  * Time: 4:39 PM
  */
 
-namespace Shukay\StuffBundle\Controller;
+namespace Shukay\DropzoneBundle\Controller;
 
 use Oneup\UploaderBundle\Controller\DropzoneController as BaseController;
 use Oneup\UploaderBundle\Uploader\File\FileInterface;

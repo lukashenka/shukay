@@ -10,13 +10,12 @@ assetic:
     lessphp:
       file: %kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php
       apply_to: "\.less$"
-
     cssrewrite: ~
 
   assets:
     dropzone:
           inputs:
-              - '%kernel.root_dir%/Resources/js/dropzone.js'
+              - '@ShukayDropzoneBundle/Resources/public/js/dropzone.js'
           filters: [?yui_js]
     jquery_js:
         inputs:
@@ -58,3 +57,7 @@ assetic:
         inputs:
             - '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
         filters: [lessphp,cssembed]
+
+    dropzone_css:
+            inputs:
+                 - 'bundles/shukaydropzone/css/dropzone.css'

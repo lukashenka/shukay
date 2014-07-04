@@ -1,3 +1,7 @@
+shukay_dropzone:
+    resource: "@ShukayDropzoneBundle/Resources/config/routing.yml"
+    prefix:   /
+
 shukay_menu:
     resource: "@ShukayMenuBundle/Resources/config/routing.yml"
     prefix:   /

@@ -95,5 +95,5 @@ oneup_uploader:
         stuff:
             frontend: custom
             custom_frontend:
-                class: Shukay\StuffBundle\Controller\DropzoneController
+                class: Shukay\DropzoneBundle\Controller\DropzoneController
                 name: MyFancyCustomUploader

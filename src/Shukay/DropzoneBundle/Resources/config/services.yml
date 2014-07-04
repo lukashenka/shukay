@@ -1,0 +1,7 @@
+parameters:
+#    shukay_dropzone.example.class: Shukay\DropzoneBundle\Example
+
+services:
+#    shukay_dropzone.example:
+#        class: %shukay_dropzone.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

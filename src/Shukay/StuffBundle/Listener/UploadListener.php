@@ -18,21 +18,23 @@ class UploadListener
 {
 
 
-    private $user;
-    private $container;
+	private $user;
+	private $container;
 
-    public function __construct(Container $container, SecurityContext $user)
-    {
+	public function __construct(Container $container, SecurityContext $user)
+	{
 
-        $this->container = $container;
-        $this->user = $user;
-    }
+		$this->container = $container;
+		$this->user = $user;
+	}
 
-    public function onPostUpload(PostUploadEvent $event)
-    {
+	public function onPostUpload(PostUploadEvent $event)
+	{
 
-        $response = $event->getResponse();
-//        $userName = $this->container->get("security.context")->getToken()->getUsername();
+		$response = $event->getResponse();
+
+
+		//        $userName = $this->container->get("security.context")->getToken()->getUsername();
 //
 //        $uploadDir = $this->container->get("path")->getUploadsDir()."stuff/";
 //
@@ -42,11 +44,11 @@ class UploadListener
 //        $file->move($uploadDir.$response["filename"]);
 
 
-    }
+	}
 
-    public function onPreUpload(PreUploadEvent $event)
-    {
+	public function onPreUpload(PreUploadEvent $event)
+	{
 
 
-    }
+	}
 }

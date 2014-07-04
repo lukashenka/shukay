@@ -1,7 +1,7 @@
 twig:
     form:
         resources:
-                - "ShukayStuffBundle:Dropzone:dropzone.type.html.twig"
+                - "ShukayDropzoneBundle:Dropzone:dropzone.type.html.twig"
                 - "ShukayMapBundle:Location:location.type.html.twig"
     globals:
         gapi:  "@gapi"
