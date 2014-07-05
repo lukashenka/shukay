@@ -24,6 +24,18 @@ class MenuTypeRepository extends EntityRepository
 		}
 	}
 
+
+    public function getProfileSettingMenu()
+    {
+        $menuType = $this->findOneByTitle("ProfileSetting");
+        if ($menuType instanceof MenuType) {
+            return $this->getRootMenu($menuType);
+        } else {
+            throw new \Doctrine\ORM\NoResultException();
+            return null;
+        }
+    }
+
 	public function getRootMenu($menuTypeId)
 	{
 		$query = $this->getEntityManager()

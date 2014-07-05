@@ -6,3 +6,8 @@ services:
           class: Shukay\MapBundle\Service\GoogleApiService
           arguments: [@service_container]
 
+    change.email.form:
+        class: Shukay\MapBundle\Form\ChangeEmailFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: change_email }

@@ -226,7 +226,7 @@ class Stuff
 	{
 		// get rid of the __DIR__ so it doesn't screw up
 		// when displaying uploaded doc/image in the view.
-		return 'uploads/stuff/images';
+		return 'uploads/stuff/'.$this->getOwner()->getUsername()."/";
 	}
 
 	/**
@@ -279,4 +279,9 @@ class Stuff
 	{
 		return $this->location;
 	}
+
+    public function getPicturePath()
+    {
+        return $this->getUploadDir().$this->getPicture();
+    }
 }

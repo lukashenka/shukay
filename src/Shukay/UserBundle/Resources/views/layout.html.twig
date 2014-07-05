@@ -1,0 +1,9 @@
+{% extends "ShukayMainBundle:Default:index.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block left_sidebar %}
+    <nav class="navbar navbar-default" role="navigation">
+        {{ knp_menu_render('profile_setting',{}, 'bootstrap') }}
+    </nav>
+{% endblock left_sidebar %}

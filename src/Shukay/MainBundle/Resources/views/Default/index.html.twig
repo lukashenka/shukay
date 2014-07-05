@@ -1,24 +1,19 @@
 {% extends "base.html.twig" %}
 
 {% block main_menu %}
-	<nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
 
-			{{ knp_menu_render('main', {}, 'bootstrap') }}
+        {{ knp_menu_render('main', {}, 'bootstrap') }}
 
-	</nav>
+    </nav>
 
 {% endblock main_menu %}
 
 {% block login %}
-	<div id="form-login">
-		{{ render(controller("FOSUserBundle:Security:login")) }}
-	</div>
+    <div id="form-login">
+        {{ render(controller("FOSUserBundle:Security:login")) }}
+    </div>
 {% endblock %}
 
-{% block body %}
 
-	<h1>Трататататататтататата</h1>
-	<p>Ататататтататата</p>
-
-{% endblock body %}
 

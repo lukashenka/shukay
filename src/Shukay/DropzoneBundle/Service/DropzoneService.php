@@ -41,6 +41,11 @@ class DropzoneService
 		return $this->container->get("path")->getUploadsDir() . "{$this->folder}/" . $this->userName;
 	}
 
+    public function getWebPath($folder="",$username="")
+    {
+        return $this->container->get("path")->getWebUploadsDir().$folder."/".$username."/";
+    }
+
 	public function saveImage($image)
 	{
 		$fs = new Filesystem();

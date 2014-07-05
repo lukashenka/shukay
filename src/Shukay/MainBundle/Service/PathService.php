@@ -33,6 +33,10 @@ class PathService
 
     }
 
+    public function getWebUploadsDir()
+    {
+        return "/uploads/";
+    }
 
     public function getUploadsDir()
     {

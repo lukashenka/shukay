@@ -41,34 +41,34 @@ class StuffController extends Controller
     {
         $user = $this->getUser();
 
-	    if (!$this->get("security.context")->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (!$this->get("security.context")->isGranted('IS_AUTHENTICATED_FULLY')) {
 
-		    throw new AccessDeniedException("");
-	    }
+            throw new AccessDeniedException("");
+        }
 
-	    $stuff = new Stuff();
-	    $stuff->setOwner($user);
-	    $form = $this->createCreateForm($stuff);
-	    $form->handleRequest($request);
+        $stuff = new Stuff();
+        $stuff->setOwner($user);
+        $form = $this->createCreateForm($stuff);
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
-	        var_dump($stuff->getPicture());
-	        $dropzone = $this->get("dropzone");
-	        $dropzone->setFolder("stuff");
-	        $dropzone->setUserName($this->get("security.context")->getToken()->getUsername());
 
-	        $dropzone->saveImage($stuff->getPicture());
+            $dropzone = $this->get("dropzone");
+            $dropzone->setFolder("stuff");
+            $dropzone->setUserName($this->get("security.context")->getToken()->getUsername());
 
-	        $em = $this->getDoctrine()->getManager();
-	        $em->persist($stuff);
-	        $em->flush();
+            $dropzone->saveImage($stuff->getPicture());
 
-	        return $this->redirect($this->generateUrl('stuff_show', array('id' => $stuff->getId())));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($stuff);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('stuff_show', array('id' => $stuff->getId())));
         }
 
         return $this->render("ShukayStuffBundle:Stuff:create.html.twig", array(
-		        'entity' => $stuff,
-		        'form' => $form->createView(),
+                'entity' => $stuff,
+                'form' => $form->createView(),
             )
         );
     }
@@ -125,13 +125,7 @@ class StuffController extends Controller
         );
     }
 
-    /**
-     * Displays a form to edit an existing Stuff entity.
-     *
-     * @Route("/{id}/edit", name="stuff_edit")
-     * @Method("GET")
-     * @Template()
-     */
+
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -145,17 +139,21 @@ class StuffController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+        return $this->render("ShukayStuffBundle:Stuff:edit.html.twig", array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
         );
     }
 
 
     private function createEditForm(Stuff $entity)
     {
-        $form = $this->createForm(new StuffType(), $entity, array(
+        $username = $entity->getOwner()->getUsername();
+        $imageDir = $this->get("dropzone")->getWebPath("stuff", $username);
+
+        $form = $this->createForm(new StuffType($imageDir), $entity, array(
             'action' => $this->generateUrl('stuff_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -169,7 +167,8 @@ class StuffController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ShukayStuffBundle:Stuff')->find($id);
+        $entity = $em->getRepository('ShukayStuffBundle:Stuff')->findOneById($id);
+        $oldImage = $entity->getPicture();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Stuff entity.');
@@ -178,8 +177,17 @@ class StuffController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-
+        $stuff = $editForm->getData();
         if ($editForm->isValid()) {
+
+            //if image not updated
+            if ($oldImage !== $editForm->getData()->getPicture()) {
+                $dropzone = $this->get("dropzone");
+                $dropzone->setFolder("stuff");
+                $dropzone->setUserName($this->get("security.context")->getToken()->getUsername());
+                $dropzone->saveImage($stuff->getPicture());
+            }
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('stuff_edit', array('id' => $id)));
@@ -229,4 +237,6 @@ class StuffController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm();
     }
+
+
 }

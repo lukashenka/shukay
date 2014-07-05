@@ -28,4 +28,9 @@ class MenuService
 	{
 		return $this->menuRepository->getMainMenu();
 	}
+
+    public function getProfileSettingMenu()
+    {
+        return $this->menuRepository->getProfileSettingMenu();
+    }
 }

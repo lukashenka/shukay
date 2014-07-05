@@ -1,7 +1,21 @@
-shukay_user_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ShukayUserBundle:Default:index }
+user_view:
+    pattern:  /user/{username}
+    defaults: { _controller: ShukayUserBundle:Profile:index, username: null }
+
+profile:
+    pattern:  /profile
+    defaults: { _controller: ShukayUserBundle:Profile:index, username: null }
+
+change_password:
+    pattern:  /profile/change-password
+    defaults: { _controller: ShukayUserBundle:ChangePassword:changePassword }
+
+change_email:
+    pattern:  /profile/change-email
+    defaults: { _controller: ShukayUserBundle:Profile:changeEmail }
 
 login_form:
     pattern:  /get-form
     defaults: { _controller: FOSUserBundle:Security:login }
+
+

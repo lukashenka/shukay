@@ -1,7 +1,8 @@
 {% block dropzone_widget %}
 
-
-
+    {% if folder and value %}
+        <img src="{{ folder }}{{ value }}" alt="image"/>
+     {% endif %}
 	<div id="dropzone-area" class="dropzone">
 	</div>
 	<input type="hidden" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>

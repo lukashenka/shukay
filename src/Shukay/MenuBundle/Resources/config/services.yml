@@ -19,6 +19,15 @@ services:
         tags:
             - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
 
+  shukay.menu.profile.setting:
+          class: Knp\Menu\MenuItem # the service definition requires setting the class
+          factory_service: shukay.menu_builder
+          factory_method: createProfileSettingMenu
+          arguments: ["@request"]
+          scope: request # needed as we have the request as a dependency here
+          tags:
+              - { name: knp_menu.menu, alias: profile_setting } # The alias is what is used to retrieve the menu
+
   twitter_bootstrap.menu_renderer:
           class: Shukay\MenuBundle\Menu\TwitterBootstrapRenderer
           arguments:

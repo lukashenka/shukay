@@ -24,7 +24,7 @@ shukay_admin:
 
 shukay_user:
     resource: "@ShukayUserBundle/Resources/config/routing.yml"
-    prefix:   /user/
+    prefix:   /
 
 shukay_main:
     resource: "@ShukayMainBundle/Resources/config/routing.yml"
@@ -46,9 +46,6 @@ fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
     prefix: /resetting
 
-fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
 
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"

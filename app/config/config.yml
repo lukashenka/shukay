@@ -76,6 +76,10 @@ fos_user:
     group:
         group_class:  Shukay\UserBundle\Entity\Group
 
+    profile:
+            form:
+                type: change_email
+
 fos_oauth_server:
     db_driver:           orm
     client_class:        Shukay\OAuthBundle\Entity\Client

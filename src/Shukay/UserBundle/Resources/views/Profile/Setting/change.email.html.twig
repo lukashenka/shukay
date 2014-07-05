@@ -1,0 +1,11 @@
+{% extends "@ShukayUser/layout.html.twig" %}
+
+{% block content %}
+    <form action="{{ path('change_email') }}" {{ form_enctype(form) }} method="POST"
+          class="fos_user_profile_edit">
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}"/>
+        </div>
+    </form>
+{% endblock content %}

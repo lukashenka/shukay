@@ -61,5 +61,35 @@ class MenuBuilder extends ContainerAware
 		return $menu;
 	}
 
+    public function createProfileSettingMenu()
+    {
+
+        $menuItems = $this->container->get('menu')->getProfileSettingMenu();
+        /**
+         * @param MenuItem $menu
+         */
+        $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav');
+        foreach ($menuItems as $item) {
+            if ($item instanceof Menu) {
+
+                $menu->addChild($item->getTitle(), array('route' => $item->getRoute()));
+
+                if ($children = $item->getChildren()) {
+                    foreach ($children as $child) {
+                        if ($child instanceof Menu) {
+                            $menu[$item->getTitle()]
+                                ->setAttribute('dropdown', true)
+                                ->addChild($child->getTitle(), array('route' => $child->getRoute()));
+                        }
+                    }
+                }
+
+            }
+        }
+
+        return $menu;
+    }
+
 
 }
