@@ -27,6 +27,11 @@ class User extends BaseUser
 	 */
 	private $stuff;
 
+    /**
+     * @ORM\OneToOne(targetEntity="ProfileInformation", mappedBy="user")
+     */
+    private $profileInformation;
+
 	/**
 	 * Get id
 	 *
@@ -98,6 +103,31 @@ class User extends BaseUser
 	{
 		return $this->stuff;
 	}
+
+
+
+    /**
+     * Set profileInformation
+     *
+     * @param \Shukay\UserBundle\Entity\ProfileInformation $profileInformation
+     * @return User
+     */
+    public function setProfileInformation(\Shukay\UserBundle\Entity\ProfileInformation $profileInformation = null)
+    {
+        $this->profileInformation = $profileInformation;
+
+        return $this;
+    }
+
+    /**
+     * Get profileInformation
+     *
+     * @return \Shukay\UserBundle\Entity\ProfileInformation 
+     */
+    public function getProfileInformation()
+    {
+        return $this->profileInformation;
+    }
 
 
 }

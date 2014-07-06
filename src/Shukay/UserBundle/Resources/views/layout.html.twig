@@ -1,6 +1,10 @@
 {% extends "ShukayMainBundle:Default:index.html.twig" %}
 {% block javascripts %}
     {{ parent() }}
+    {#TODO: ADD js to combine#}
+    {% javascripts '@dropzone' filter='?yui_js' combine=true %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 {% block left_sidebar %}
     <nav class="navbar navbar-default" role="navigation">

@@ -6,6 +6,15 @@ profile:
     pattern:  /profile
     defaults: { _controller: ShukayUserBundle:Profile:index, username: null }
 
+change_profile:
+    pattern:  /profile/change-profile
+    defaults: { _controller: ShukayUserBundle:Profile:changeProfile }
+
+update_profile:
+    pattern:  /profile/update-profile/{id}
+    defaults: { _controller: ShukayUserBundle:Profile:updateProfile }
+    methods:  [PUT]
+
 change_password:
     pattern:  /profile/change-password
     defaults: { _controller: ShukayUserBundle:ChangePassword:changePassword }

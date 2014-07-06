@@ -1,0 +1,7 @@
+parameters:
+#    shukay_mail.example.class: Shukay\MailBundle\Example
+
+services:
+#    shukay_mail.example:
+#        class: %shukay_mail.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

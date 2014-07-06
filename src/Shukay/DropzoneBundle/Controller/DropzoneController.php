@@ -20,6 +20,9 @@ class DropzoneController extends BaseController
 
     public function upload()
     {
+        $folder = $this->config["storage"]["directory"];
+        $folder = substr(strrchr($folder, "/"), 1);
+
         $request = $this->container->get('request');
         $response = new EmptyResponse();
         $files = $this->getFiles($request->files);
@@ -38,7 +41,7 @@ class DropzoneController extends BaseController
 
 	                $dropzone = $this->container->get("dropzone");
 	                $dropzone->setUserName($userName);
-	                $dropzone->setFolder("stuff");
+	                $dropzone->setFolder($folder);
 
 	                $uploadPath = $dropzone->getTempPath();
 

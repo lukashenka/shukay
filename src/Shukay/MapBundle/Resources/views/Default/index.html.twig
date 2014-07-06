@@ -8,6 +8,9 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key={{ gapi.apiToken.api_key }}"></script>
 {% endblock %}
+{% block left_sidebar %}
+    {% include "@ShukayStuff/Stuff/list.html.twig" with {"entities":allStuff} %}
+{% endblock %}
 {% block content %}
     {% include "ShukayMapBundle:Map:map.large.html.twig" %}
 {% endblock %}

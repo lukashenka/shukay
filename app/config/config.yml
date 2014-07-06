@@ -63,11 +63,15 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    port:      %mailer_port%
+    username:  %mailer_user%
+    encryption: %mailer_encryption%
+    auth_mode:  %mailer_auth_mode%
+    password:  %mailer_password%
     spool:     { type: memory }
+
 
 fos_user:
     db_driver:        orm # can be orm or odm
@@ -79,6 +83,22 @@ fos_user:
     profile:
             form:
                 type: change_email
+
+    registration:
+            confirmation:
+                enabled:    true
+                from_email:
+                    address:        registration@acmedemo.com
+                    sender_name:    Acme Demo Registration
+    resetting:
+            email:
+                from_email:
+                    address:        resetting@acmedemo.com
+                    sender_name:    Acme Demo Resetting
+
+    from_email:
+            address:        noreply@acmedemo.com
+            sender_name:    Acme Demo App
 
 fos_oauth_server:
     db_driver:           orm
@@ -100,4 +120,9 @@ oneup_uploader:
             frontend: custom
             custom_frontend:
                 class: Shukay\DropzoneBundle\Controller\DropzoneController
-                name: MyFancyCustomUploader
+                name: StuffUploader
+        avatars:
+                    frontend: custom
+                    custom_frontend:
+                        class: Shukay\DropzoneBundle\Controller\DropzoneController
+                        name: AvatarsUploader

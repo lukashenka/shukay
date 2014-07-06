@@ -22,11 +22,31 @@ class ProfileInformation
     private $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Shukay\UserBundle\Entity\User", inversedBy="profileInformation")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="avatar", type="string", length=255)
      */
     private $avatar;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=255)
+     */
+    private $lastName;
 
     /**
      * @var float
@@ -180,5 +200,74 @@ class ProfileInformation
     public function getAbout()
     {
         return $this->about;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return ProfileInformation
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return ProfileInformation
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Shukay\UserBundle\Entity\User $user
+     * @return ProfileInformation
+     */
+    public function setUser(\Shukay\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Shukay\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

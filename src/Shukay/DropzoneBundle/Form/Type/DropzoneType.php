@@ -16,10 +16,12 @@ class DropzoneType extends AbstractType
 {
 
     private $folder;
+    private $type;
 
-    public function __construct($folder = "")
+    public function __construct($folder = "", $type)
     {
         $this->folder = $folder;
+        $this->type = $type;
     }
 
     public function getName()
@@ -37,11 +39,8 @@ class DropzoneType extends AbstractType
     {
         parent::finishView($view, $form, $options);
         $view->vars['folder'] = $this->folder;
-        // same for other fields
+        $view->vars['type'] = $this->type;
     }
 
 
-
-
-
-} 
+}

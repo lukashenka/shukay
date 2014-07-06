@@ -21,6 +21,17 @@ services:
             calls:
                 - [ setTranslationDomain, [ShukayAdminBundle]]
 
+    sonata.admin.profile.information:
+                class: Shukay\AdminBundle\Admin\ProfileInformationAdmin
+                tags:
+                    - { name: sonata.admin, manager_type: orm, group: "User", label: "ProfileInformation" }
+                arguments:
+                    - ~
+                    - Shukay\UserBundle\Entity\ProfileInformation
+                    - ~
+                calls:
+                    - [ setTranslationDomain, [ShukayUserBundle]]
+
     admin.menu:
             class: Shukay\AdminBundle\Admin\MenuAdmin
             tags:

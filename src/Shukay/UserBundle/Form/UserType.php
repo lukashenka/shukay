@@ -1,42 +1,42 @@
 <?php
 
-namespace Shukay\StuffBundle\Form;
+namespace Shukay\UserBundle\Form;
 
-use Shukay\DropzoneBundle\Form\Type\DropzoneType;
-use Shukay\MapBundle\Form\LocationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Shukay\UserBundle\Form\ProfileInformationType;
 
-class StuffType extends AbstractType
+class UserType extends AbstractType
 {
-    private $folder;
 
-    public function __construct($folder = "")
+    private  $avatarsFolder;
+
+
+
+    public function __construct($avatarsFolder = "")
     {
-        $this->folder = $folder;
+        $this->avatarsFolder = $avatarsFolder;
     }
-
-    /**
+        /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('location', new LocationType())
-            ->add('picture', new DropzoneType($this->folder,"stuff"))
-            ->add('name')
-            ->add('description');
-    }
+            ->add('profileInformation', new ProfileInformationType($this->avatarsFolder))
 
+        ;
+    }
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Shukay\StuffBundle\Entity\Stuff'
+            'data_class' => 'Shukay\UserBundle\Entity\User'
         ));
     }
 
@@ -45,6 +45,6 @@ class StuffType extends AbstractType
      */
     public function getName()
     {
-        return 'stuff';
+        return 'user';
     }
 }

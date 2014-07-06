@@ -9,7 +9,7 @@
 	<script>
 		Dropzone.autoDiscover = false;
 		$("#dropzone-area").dropzone({
-			url: "{{ oneup_uploader_endpoint('stuff') }}",
+			url: "{{ oneup_uploader_endpoint(type) }}",
 			maxFilesize: 2, // MB
 			uploadMultiple: false,
 			addRemoveLinks: true,

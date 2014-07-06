@@ -39,6 +39,7 @@ class AppKernel extends Kernel
 			new Shukay\MenuBundle\ShukayMenuBundle(),
 			new Oneup\UploaderBundle\OneupUploaderBundle(),
 			new Shukay\DropzoneBundle\ShukayDropzoneBundle(),
+            new Shukay\MailBundle\ShukayMailBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {
