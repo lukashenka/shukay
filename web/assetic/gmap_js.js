@@ -7,23 +7,23 @@ var map;
 function displayMap(container, options, callback) {
 
 
-    initialize(container, options, callback);
+	initialize(container, options, callback);
 
 
 }
 
 function initialize(container, options, callback) {
 
-    getHtmlLocation(options, function (options) {
+	getHtmlLocation(options, function (options) {
 
-        options.center = new google.maps.LatLng(options.lat, options.lng);
-        map = new google.maps.Map(document.getElementById(container),
-            options);
+		options.center = new google.maps.LatLng(options.lat, options.lng);
+		map = new google.maps.Map(document.getElementById(container),
+			options);
 
-        if (callback && typeof callback === "function") {
-            callback();
-        }
-    })
+		if (callback && typeof callback === "function") {
+			callback();
+		}
+	})
 
 
 }
@@ -31,80 +31,80 @@ function initialize(container, options, callback) {
 
 function addMarker(options) {
 
-    return showMarker(options);
+	return showMarker(options);
 
 }
 
 function showMarker(options) {
 
 
-    var dragMarker = new google.maps.Marker(options);
+	var dragMarker = new google.maps.Marker(options);
 
-    map.setCenter(dragMarker.position);
-    dragMarker.setMap(map);
-    return dragMarker;
+	map.setCenter(dragMarker.position);
+	dragMarker.setMap(map);
+	return dragMarker;
 
 
 }
 
 function handleNoGeolocation(errorFlag) {
-    if (errorFlag) {
-        var content = 'Error: The Geolocation service failed.';
-    } else {
-        var content = 'Error: Your browser doesn\'t support geolocation.';
-    }
+	if (errorFlag) {
+		var content = 'Error: The Geolocation service failed.';
+	} else {
+		var content = 'Error: Your browser doesn\'t support geolocation.';
+	}
 
-    alert(content);
+	alert(content);
 }
 
 function listenMarkerPosition(marker, calback) {
-    google.maps.event.addListener(marker, 'dragend', function (evt) {
+	google.maps.event.addListener(marker, 'dragend', function (evt) {
 
-        position = {
-            latitude: evt.latLng.lat(),
-            longitude: evt.latLng.lng()
-        }
+		position = {
+			latitude: evt.latLng.lat(),
+			longitude: evt.latLng.lng()
+		}
 
-        calback(position);
+		calback(position);
 
-    });
+	});
 }
 
 
 function getHtmlLocation(defaultOptions, callback) {
 
 
-    if(navigator.geolocation) {
-        browserSupportFlag = true;
-        navigator.geolocation.getCurrentPosition(function(position) {
-            callback(position);
-            callback({
-                result: "success",
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-                zoom: defaultOptions.zoom
-            });
-        }, function() {
+	if (navigator.geolocation) {
+		browserSupportFlag = true;
+		navigator.geolocation.getCurrentPosition(function (position) {
+			callback(position);
+			callback({
+				result: "success",
+				lat: position.coords.latitude,
+				lng: position.coords.longitude,
+				zoom: defaultOptions.zoom
+			});
+		}, function () {
 
-            callback({
-                result: "error",
-                type: "failed_to_get",
-                lat: defaultOptions.lat,
-                lng: defaultOptions.lng,
-                zoom: defaultOptions.zoom
-            });
-        });
-    }
-    // Browser doesn't support Geolocation
-    else {
-        callback({
-            result: "error",
-            type: "not_supported",
-            lat: defaultOptions.lat,
-            lng: defaultOptions.lng,
-            zoom: defaultOptions.zoom
+			callback({
+				result: "error",
+				type: "failed_to_get",
+				lat: defaultOptions.lat,
+				lng: defaultOptions.lng,
+				zoom: defaultOptions.zoom
+			});
+		});
+	}
+	// Browser doesn't support Geolocation
+	else {
+		callback({
+			result: "error",
+			type: "not_supported",
+			lat: defaultOptions.lat,
+			lng: defaultOptions.lng,
+			zoom: defaultOptions.zoom
 
-        });
-    }
+		});
+	}
 
 }

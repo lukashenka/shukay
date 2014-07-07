@@ -55,9 +55,10 @@
         "jms/serializer-bundle": "dev-master",
         "friendsofsymfony/oauth-server-bundle": "dev-master",
         "oneup/uploader-bundle": "1.0.*@dev",
+	    "genemu/form-bundle": "2.2.*",
+	    "bmatzner/jquery-ui-bundle": "*",
 
-
-        "knplabs/knp-gaufrette-bundle": "0.1.*"
+	    "knplabs/knp-gaufrette-bundle": "0.1.*"
 
 
     },

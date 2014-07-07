@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: mailer.yml }
     - { resource: gmap.yml }
     - { resource: security.yml }
     - { resource: assetic.yml }
@@ -65,12 +66,13 @@ doctrine:
 swiftmailer:
     transport: %mailer_transport%
     host:      %mailer_host%
-    port:      %mailer_port%
     username:  %mailer_user%
     encryption: %mailer_encryption%
     auth_mode:  %mailer_auth_mode%
     password:  %mailer_password%
-    spool:     { type: memory }
+    spool:
+         type: file
+         path: "%kernel.root_dir%/../spool"
 
 
 fos_user:

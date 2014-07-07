@@ -40,6 +40,8 @@ class AppKernel extends Kernel
 			new Oneup\UploaderBundle\OneupUploaderBundle(),
 			new Shukay\DropzoneBundle\ShukayDropzoneBundle(),
             new Shukay\MailBundle\ShukayMailBundle(),
+			new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+			new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

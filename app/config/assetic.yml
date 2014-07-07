@@ -22,6 +22,11 @@ assetic:
             - '%kernel.root_dir%/Resources/js/jquery-2.1.1.js'
         filters: [?yui_js]
 
+    jquery_ui_js:
+            inputs:
+                - 'bundles/bmatznerjqueryui/js/jquery-ui.js'
+            filters: [?yui_js]
+
     gmap_jquery:
             inputs:
                 - '%kernel.root_dir%/Resources/js/gmap3.js'
@@ -61,3 +66,10 @@ assetic:
     dropzone_css:
             inputs:
                  - 'bundles/shukaydropzone/css/dropzone.css'
+            filters: [cssrewrite]
+
+    jquery_ui_smooth_css:
+                inputs:
+                    - 'bundles/bmatznerjqueryui/css/smoothness/jquery-ui.css'
+                    - 'bundles/bmatznerjqueryui/css/smoothness/jquery.ui.theme.css'
+                filters: [cssrewrite]
