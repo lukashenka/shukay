@@ -6,8 +6,8 @@ services:
                 - @router
                 - @session
 
-   user.mail_service:
+    user.mail_service:
                class: Shukay\UserBundle\Mailer\Mailer
                arguments: [%fos_user.model.user.class%]
-                      tags:
-                         - { name: form.type, alias: change_email }
+               tags:
+                   - { name: form.type, alias: change_email }

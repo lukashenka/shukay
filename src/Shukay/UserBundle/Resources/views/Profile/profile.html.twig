@@ -1,8 +1,11 @@
 {% extends "@ShukayUser/layout.html.twig" %}
 
 {% block content %}
-    {{ user.username }}
+    <div>User: {{ user.username }}</div>
+    <div>Last Name: {{ user.profileInformation.lastName }}</div>
+    <div>First Name: {{ user.profileInformation.firstName }}</div>
 
-
+    <div><img src="/uploads/avatars/{{ user.username }}/{{ user.profileInformation.avatar }}"</div>
+    <div></div>
 
 {% endblock %}

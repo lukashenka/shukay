@@ -1,0 +1,7 @@
+parameters:
+#    shukay_picture.example.class: Shukay\PictureBundle\Example
+
+services:
+#    shukay_picture.example:
+#        class: %shukay_picture.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

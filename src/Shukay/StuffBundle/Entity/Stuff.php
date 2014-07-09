@@ -60,6 +60,11 @@ class Stuff
 	private $location;
 
 
+    /**
+     * @var
+     */
+    private $pictures;
+
 	public $path;
 
 	/**

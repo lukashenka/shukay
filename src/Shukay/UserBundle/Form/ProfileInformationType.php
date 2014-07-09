@@ -29,7 +29,7 @@ class ProfileInformationType extends AbstractType
             ->add('avatar', new DropzoneType($this->avatarsFolder,"avatars"))
             ->add('firstName')
             ->add('lastName')
-	        ->add('rate', 'genemu_jqueryrating')
+	        ->add('rate')
 	        ->add('description')
             ->add('contacts')
             ->add('about');

@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
 
     {% block javascripts %}
-	    {% javascripts '@jquery_js' '@bootstrap_js' '@user_js' '@core_js' '@jquery_ui_js' filter='?yui_js' combine=true %}
+	    {% javascripts '@jquery_js' '@bootstrap_js' '@user_js' '@core_js'  filter='?yui_js' combine=true %}
 	    <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock %}
@@ -16,7 +16,7 @@
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
         {% endstylesheets %}
 
-	    {% stylesheets '@dropzone_css' '@jquery_ui_smooth_css' filter='cssrewrite' %}
+	    {% stylesheets '@dropzone_css'  filter='cssrewrite' %}
 	    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
         {% endstylesheets %}
 
