@@ -6,6 +6,22 @@ profile:
     pattern:  /profile
     defaults: { _controller: ShukayUserBundle:Profile:index, username: null }
 
+registration:
+    pattern:  /registration
+    defaults: { _controller: ShukayUserBundle:Register:register }
+
+registration_confirm:
+    pattern:  /registration/confirm/{token}
+    defaults: { _controller: ShukayUserBundle:Register:confirm }
+
+registration_confirmed:
+    pattern:  /registration/confirmed
+    defaults: { _controller: ShukayUserBundle:Register:confirmed }
+
+registration_check_email:
+    pattern:  /registration/check-email
+    defaults: { _controller: ShukayUserBundle:Register:checkEmail }
+
 change_profile:
     pattern:  /profile/change-profile
     defaults: { _controller: ShukayUserBundle:Profile:changeProfile }
