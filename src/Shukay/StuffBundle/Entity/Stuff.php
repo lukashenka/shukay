@@ -60,10 +60,14 @@ class Stuff
 	private $location;
 
 
-    /**
-     * @var
-     */
-    private $pictures;
+	/**
+	 * @ORM\ManyToMany(targetEntity="Shukay\PictureBundle\Entity\Picture")
+	 * @ORM\JoinTable(name="stuff_picture",
+	 *      joinColumns={@ORM\JoinColumn(name="stuff_id", referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="picture_id", referencedColumnName="id")}
+	 *      )
+	 */
+	private $pictures;
 
 	public $path;
 
@@ -289,4 +293,37 @@ class Stuff
     {
         return $this->getUploadDir().$this->getPicture();
     }
+
+	/**
+	 * Add pictures
+	 *
+	 * @param \Shukay\PictureBundle\Entity\Picture $pictures
+	 * @return Stuff
+	 */
+	public function addPicture(\Shukay\PictureBundle\Entity\Picture $pictures)
+	{
+		$this->pictures[] = $pictures;
+
+		return $this;
+	}
+
+	/**
+	 * Remove pictures
+	 *
+	 * @param \Shukay\PictureBundle\Entity\Picture $pictures
+	 */
+	public function removePicture(\Shukay\PictureBundle\Entity\Picture $pictures)
+	{
+		$this->pictures->removeElement($pictures);
+	}
+
+	/**
+	 * Get pictures
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getPictures()
+	{
+		return $this->pictures;
+	}
 }

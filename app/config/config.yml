@@ -57,6 +57,7 @@ doctrine:
                             ShukayStuffBundle: ~
                             ShukayMenuBundle: ~
                             ShukayMapBundle: ~
+                            ShukayPictureBundle: ~
                             ShukayOAuthBundle: ~
                             FOSUserBundle: ~
 
