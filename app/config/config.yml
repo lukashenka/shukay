@@ -71,13 +71,19 @@ swiftmailer:
     encryption: %mailer_encryption%
     auth_mode:  %mailer_auth_mode%
     password:  %mailer_password%
-    spool:     { type: memory }
+    spool:
+            type: file
+            path: %kernel.root_dir%/spool
 
 
 fos_user:
     db_driver:        orm # can be orm or odm
     firewall_name:    main
     user_class:       Shukay\UserBundle\Entity\User
+
+    service:
+            mailer: user.mail_service
+
     group:
         group_class:  Shukay\UserBundle\Entity\Group
 
