@@ -41,16 +41,27 @@ class DropzoneService
 		return $this->container->get("path")->getUploadsDir() . "{$this->folder}/" . $this->userName;
 	}
 
-    public function getWebPath($folder="",$username="")
-    {
-        return $this->container->get("path")->getWebUploadsDir().$folder."/".$username."/";
-    }
+	public function getWebPath($folder = "", $username = "")
+	{
+		return $this->container->get("path")->getWebUploadsDir() . $folder . "/" . $username . "/";
+	}
 
 	public function saveImage($image)
 	{
 		$fs = new Filesystem();
 		$fs->copy($this->getTempPath() . "/" . $image, $this->getUserDirPath() . "/" . $image);
 		$fs->remove($this->getTempPath());
+	}
+
+	public function saveImages($images)
+	{
+
+		foreach ($images as $image) {
+			$fs = new Filesystem();
+			$fs->copy($this->getTempPath() . "/" . $image, $this->getUserDirPath() . "/" . $image);
+			$fs->remove($this->getTempPath());
+		}
+
 	}
 
 } 

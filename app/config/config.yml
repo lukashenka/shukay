@@ -1,4 +1,5 @@
 imports:
+    - { resource: dropzone.yml }
     - { resource: parameters.yml }
     - { resource: gmap.yml }
     - { resource: mailer.yml }
@@ -126,10 +127,10 @@ oneup_uploader:
         stuff:
             frontend: custom
             custom_frontend:
-                class: Shukay\DropzoneBundle\Controller\DropzoneController
+                class: Shukay\DropzoneBundle\Controller\StuffDropzoneController
                 name: StuffUploader
         avatars:
                     frontend: custom
                     custom_frontend:
-                        class: Shukay\DropzoneBundle\Controller\DropzoneController
+                        class: Shukay\DropzoneBundle\Controller\AvatarDropzoneController
                         name: AvatarsUploader

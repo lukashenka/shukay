@@ -1,5 +1,8 @@
-
 services:
-    dropzone:
-          class: Shukay\DropzoneBundle\Service\DropzoneService
+    dropzone_avatar:
+          class: Shukay\DropzoneBundle\Service\AvatarDropzoneService
           arguments: [@service_container]
+
+    dropzone_stuff:
+              class: Shukay\DropzoneBundle\Service\StuffDropzoneService
+              arguments: [@service_container]

@@ -10,41 +10,41 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class StuffType extends AbstractType
 {
-    private $folder;
+	private $folder;
 
-    public function __construct($folder = "")
-    {
-        $this->folder = $folder;
-    }
+	public function __construct($folder = "")
+	{
+		$this->folder = $folder;
+	}
 
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('location', new LocationType())
-            ->add('picture', new DropzoneType($this->folder,"stuff"))
-            ->add('name')
-            ->add('description');
-    }
+	/**
+	 * @param FormBuilderInterface $builder
+	 * @param array $options
+	 */
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
+		$builder
+			->add('location', new LocationType())
+			->add('name')
+			->add('description')
+			->add('pictures', new DropzoneType($this->folder, "stuff"));
+	}
 
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'Shukay\StuffBundle\Entity\Stuff'
-        ));
-    }
+	/**
+	 * @param OptionsResolverInterface $resolver
+	 */
+	public function setDefaultOptions(OptionsResolverInterface $resolver)
+	{
+		$resolver->setDefaults(array(
+			'data_class' => 'Shukay\StuffBundle\Entity\Stuff'
+		));
+	}
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'stuff';
-    }
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'stuff';
+	}
 }

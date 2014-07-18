@@ -20,9 +20,27 @@ class Configuration implements ConfigurationInterface
 		$treeBuilder = new TreeBuilder();
 		$rootNode = $treeBuilder->root('shukay_dropzone');
 
-		// Here you should define the parameters that are allowed to
-		// configure your bundle. See the documentation linked above for
-		// more information on that topic.
+		$rootNode
+			->children()
+			->arrayNode('types')
+			->useAttributeAsKey('id')
+			->isRequired()
+			->requiresAtLeastOneElement()
+			->prototype('array')
+			->children()
+			->enumNode('frontend')
+			->values(array('fineuploader', 'blueimp', 'uploadify', 'yui3', 'fancyupload', 'mooupload', 'plupload', 'dropzone', 'custom'))
+			->isRequired()
+			->end()
+			->arrayNode('custom_frontend')
+			->addDefaultsIfNotSet()
+			->children()
+			->scalarNode('name')->defaultNull()->end()
+			->scalarNode('class')->defaultNull()->end()
+			->end()
+			->end()
+			->end();
+
 
 		return $treeBuilder;
 	}

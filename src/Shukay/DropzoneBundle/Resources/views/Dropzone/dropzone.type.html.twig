@@ -1,51 +1,6 @@
 {% block dropzone_widget %}
 
-    {% if folder and value %}
-        <img src="{{ folder }}{{ value }}" alt="image"/>
-     {% endif %}
-	<div id="dropzone-area" class="dropzone">
-	</div>
-	<input type="hidden" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
-	<script>
-		Dropzone.autoDiscover = false;
-		$("#dropzone-area").dropzone({
-			url: "{{ oneup_uploader_endpoint(type) }}",
-			maxFilesize: 2, // MB
-			uploadMultiple: false,
-			addRemoveLinks: true,
-			maxFiles: 1,
-			acceptedFiles: "image/*",
-			init: function () {
-				this.on("addedfile", function () {
-					if (this.files[1] != null) {
-						this.removeFile(this.files[0]);
-					}
-				});
-			},
-			removedfile: function (file) {
+	{% include 'ShukayDropzoneBundle:Dropzone:dropzone_{{ type }}.type.html.twig' %}
 
-				$("#{{ id }}").val('');
-				var _ref;
-				if (file.previewElement) {
-					if ((_ref = file.previewElement) != null) {
-						_ref.parentNode.removeChild(file.previewElement);
-					}
-				}
-				return this._updateMaxFilesReachedClass();
-			},
-			success: function (file, response) {
-				var filename = response.filename;
-				$("#{{ id }}").val(filename);
-
-				if (file.previewElement) {
-					return file.previewElement.classList.add("dz-success");
-				}
-
-			},
-			error: function (data, response) {
-				console.log(response);
-			}
-		});
-	</script>
 
 {% endblock %}

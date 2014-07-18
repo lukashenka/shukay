@@ -1,0 +1,4 @@
+shukay_dropzone:
+        types:
+            avatars:
+                maxFilesAllowed: 12
